@@ -1,0 +1,8 @@
+.venv
+.vscode
+repositories/browsers
+dist
+build
+__pycache__/
+*.pyc
+*.pyo

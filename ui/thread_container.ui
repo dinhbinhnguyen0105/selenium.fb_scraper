@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ThreadContainer</class>
+ <widget class="QWidget" name="ThreadContainer">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>562</width>
+    <height>104</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">#ThreadContainer{
+  font-family: &quot;Courier New&quot;;
+  background-color: #FFFFFF;
+}
+QGroupBox {
+  font-family: &quot;Courier New&quot;;
+  font-size: 13px;
+  background-color: rgba(248, 249, 250, 1);
+}
+QLineEdit {
+  padding: 4px 0;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  margin-left: 8px;
+  padding-left: 4px;
+  background-color: #FFFFFF;
+  color:#212529;
+}
+QPlainTextEdit {
+	background-color: #FFFFFF;
+  color:#212529;
+}
+QLabel {
+  font-family: &quot;Courier New&quot;;
+  font-size: 13px;
+  color: rgb(90, 93, 97);
+}
+QRadioButton {
+  font-family: &quot;Courier New&quot;;
+  font-size: 13px;
+  color: #212529;
+}
+QComboBox {
+  font-family: &quot;Courier New&quot;;
+  font-size: 13px;
+  color: #212529;
+}
+QPushButton {
+  color: #212529;
+}
+
+QCheckBox{
+  color: #212529;
+}</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <property name="spacing">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="thread_name_label">
+       <property name="font">
+        <font>
+         <family>Courier New</family>
+         <pointsize>-1</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">margin: 0;</string>
+       </property>
+       <property name="text">
+        <string>Thread Num</string>
+       </property>
+       <property name="indent">
+        <number>0</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QLineEdit" name="select_udd_input">
+         <property name="styleSheet">
+          <string notr="true">margin: 0px 8px;
+padding-left: 4px;</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="select_udd_btn">
+         <property name="text">
+          <string>Select udd</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="launch_browser_btn">
+         <property name="styleSheet">
+          <string notr="true">m</string>
+         </property>
+         <property name="text">
+          <string>Launch</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QProgressBar" name="main_progress">
+         <property name="value">
+          <number>24</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="main_progress_label">
+         <property name="styleSheet">
+          <string notr="true">margin: 0 4px;</string>
+         </property>
+         <property name="text">
+          <string>0/0</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QProgressBar" name="sub_progress">
+         <property name="value">
+          <number>24</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="sub_progress_label">
+         <property name="styleSheet">
+          <string notr="true">margin: 0 4px;</string>
+         </property>
+         <property name="text">
+          <string>0/0</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QLabel" name="progress_message">
+       <property name="font">
+        <font>
+         <family>Courier New</family>
+         <pointsize>-1</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">margin: 0;</string>
+       </property>
+       <property name="text">
+        <string>Progress msg</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+       <property name="indent">
+        <number>0</number>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

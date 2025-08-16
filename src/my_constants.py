@@ -1,0 +1,16 @@
+# src/my_constants.py
+TABLE_IGNORE_PHONE_NUMBER = "TABLE_IGNORE_PHONE_NUMBER"
+TABLE_IGNORE_UID = "TABLE_IGNORE_UID"
+TABLE_RESULTS = "TABLE_RESULTS"
+
+DATA_TABLES = {
+    "Ignore phone": TABLE_IGNORE_PHONE_NUMBER,
+    "Ignore uid": TABLE_IGNORE_UID,
+    "Results": TABLE_RESULTS,
+}
+
+DB_CONNECTION = "DB_CONNECTION"
+DB_CONTAINER_PATH = "/Volumes/KINGSTON/Dev/python/python.scraper-v2/repositories/db"
+
+SCRAPING = "scraping"
+LAUNCHING = "launching"
