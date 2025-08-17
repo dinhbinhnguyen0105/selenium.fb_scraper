@@ -118,9 +118,9 @@ def on_scraper(
                         WebDriverWait(driver, 3).until(
                             expected_conditions.staleness_of(loading_elm)
                         )
-                    except TimeoutException:
-                        pass
-
+                        break
+                    except Exception:
+                        continue
             except NoSuchElementException:
                 pass
             group_elms = sidebar_elm.find_elements(
@@ -201,6 +201,7 @@ def on_scraper(
             post_index = 0
 
             while post_index < task_info.post_num:
+                print(f"{post_index}. \t", end="")
                 result = Result_Type(
                     id=None,
                     article_url="",
@@ -240,14 +241,14 @@ def on_scraper(
                     result.author_name = author_info_obj.get("author_name")
 
                     if not result.author_url:
-                        raise ScrapingError("ERROR: author_url is empty!")
+                        raise ScrapingError("author_url is empty!")
                     uid = ""
                     if result.author_url.endswith("/"):
                         uid = result.author_url.split("/")[-2]
                     else:
                         uid = result.author_url.split("/")[-1]
                     if services["uid"].is_existed("value", uid):
-                        raise ScrapingError(f"ERROR: uid `{uid}` existed!")
+                        raise ScrapingError(f"uid `{uid}` existed!")
                     else:
                         services["uid"].create(
                             IgnoreUID_Type(id=None, value=uid, created_at=None)
@@ -262,7 +263,7 @@ def on_scraper(
                     )
 
                     if not result.article_content:
-                        raise ScrapingError("ERROR: article_content is empty!")
+                        raise ScrapingError("article_content is empty!")
 
                     phone_number = ""
                     regex_pattern = r"[^0-9\s.\-()]+"
@@ -271,12 +272,10 @@ def on_scraper(
                     ):
                         phone_number = re.sub(r"\D", "", match.raw_string)
                     if not phone_number:
-                        raise ScrapingError("ERROR: phone_number is empty!")
+                        raise ScrapingError("phone_number is empty!")
 
                     if services["phone_number"].is_existed("value", phone_number):
-                        raise ScrapingError(
-                            f"ERROR: phone_number `{phone_number}` existed!"
-                        )
+                        raise ScrapingError(f"phone_number `{phone_number}` existed!")
                     else:
                         services["phone_number"].create(
                             IgnorePhoneNumber_Type(
@@ -313,6 +312,8 @@ def on_scraper(
             return
 
     group_urls = get_groups()
+
+    print(group_urls)
 
     if not task_info.target_keywords:
         for group_url in group_urls:
