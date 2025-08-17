@@ -25,12 +25,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def setup_ui(self):
         self.thread_num_input.setValue(0)
-        regex = QRegularExpression("^[a-zA-Z0-9 &,]+$")
-        validator = QRegularExpressionValidator(regex)
-        self.group_key_input.setValidator(validator)
-        self.ignore_group_key_input.setValidator(validator)
-        self.group_key_input.setText("thuê, sang")
-        self.ignore_group_key_input.setText("trọ")
+        # regex = QRegularExpression("^[a-zA-Z0-9 &,]+$")
+        # validator = QRegularExpressionValidator(regex)
+        # self.group_key_input.setValidator(validator)
+        # self.ignore_group_key_input.setValidator(validator)
+        self.group_key_input.setText("")
+        # self.ignore_group_key_input.setText("trọ")
 
         self.data_open_btn.setDisabled(True)
         for name, value in DATA_TABLES.items():

@@ -297,12 +297,12 @@ def on_scraper(
 
                     # TODO get contact
                     article_info["contact"] = ""
-                    regex_pattern = r"[^0-9\s.\-()]+" 
+                    regex_pattern = r"[^0-9\s.\-()]+"
                     for match in PhoneNumberMatcher(
                         re.sub(regex_pattern, " ", article_info["content"]), "VN"
                     ):
-                        article_info["contact"] = re.sub(r"\D" , "", match.raw_string)
-                    
+                        article_info["contact"] = re.sub(r"\D", "", match.raw_string)
+
                     # TODO get article_url
                     article_info["article_url"] = get_article_url(article_info_locator)
                     if not article_info["article_url"]:
@@ -343,7 +343,9 @@ def on_scraper(
                     result.contact = article_info["contact"]
 
                     services["result"].create(result)
-                    print(f"New result: {result.author_name} - {result.contact}: {result.article_content[:100]} ...")
+                    print(
+                        f"New result: {result.author_name} - {result.contact}: {result.article_content[:100]} ..."
+                    )
 
                     # ellipsis_locator.first.hover(timeout=60_000)
                     # ellipsis_locator.first.highlight()
