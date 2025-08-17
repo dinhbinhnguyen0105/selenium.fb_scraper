@@ -1,4 +1,5 @@
 # src/my_constants.py
+from os import path
 TABLE_IGNORE_PHONE_NUMBER = "TABLE_IGNORE_PHONE_NUMBER"
 TABLE_IGNORE_UID = "TABLE_IGNORE_UID"
 TABLE_RESULTS = "TABLE_RESULTS"
@@ -10,7 +11,7 @@ DATA_TABLES = {
 }
 
 DB_CONNECTION = "DB_CONNECTION"
-DB_CONTAINER_PATH = "/Volumes/KINGSTON/Dev/python/python.scraper-v2/repositories/db"
+DB_CONTAINER_PATH = path.abspath("./repositories/db")
 
 SCRAPING = "scraping"
 LAUNCHING = "launching"
