@@ -1,6 +1,6 @@
 .venv
 .vscode
-repositories/browsers
+repositories/
 dist
 build
 __pycache__/
