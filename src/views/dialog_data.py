@@ -50,6 +50,8 @@ class Data_Dialog(QDialog, Ui_Dialog_Data):
         else:
             raise ValueError(f"Invalid table name '{self.table_name}'")
         self.table_model.select()
+        while self.table_model.canFetchMore():
+            self.table_model.fetchMore()
         self.tableView.setModel(self.table_model)
         self.import_btn = QPushButton("Import")
         self.export_btn = QPushButton("Export")
