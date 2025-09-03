@@ -51,6 +51,7 @@ def on_scraper(
     actions = ActionChains(driver=driver)
     central_scroll_script = "arguments[0].scrollIntoView({behavior: 'auto', block: 'center', inline: 'center'});"
 
+    # task_info.target_keywords
     def highlight(element: WebElement) -> None:
         # original_style = element.get_attribute("style")
         highlight_style = (
@@ -127,10 +128,9 @@ def on_scraper(
                 By.CSS_SELECTOR, "a[href^='https://www.facebook.com/groups/']"
             )
             for group_elm in group_elms:
-            #     if "thuê" in group_elm.get_attribute("textContent").lower():
-            #         group_urls.append(group_elm.get_attribute("href"))/
+                #     if "thuê" in group_elm.get_attribute("textContent").lower():
+                #         group_urls.append(group_elm.get_attribute("href"))/
                 group_urls.append(group_elm.get_attribute("href"))
-
 
             return group_urls
         except Exception as e:
@@ -243,14 +243,17 @@ def on_scraper(
                     result.author_url = author_info_obj.get("author_url")
                     result.author_name = author_info_obj.get("author_name")
 
-                    if not result.author_url:
-                        raise ScrapingError("author_url is empty!")
+                    # if not result.author_url:
+                    #     raise ScrapingError("author_url is empty!")
                     uid = ""
                     if result.author_url.endswith("/"):
                         uid = result.author_url.split("/")[-2]
                     else:
                         uid = result.author_url.split("/")[-1]
-                    if services["uid"].is_existed("value", uid):
+                    if (
+                        services["uid"].is_existed("value", uid)
+                        and not task_info.target_keywords
+                    ):
                         raise ScrapingError(f"uid `{uid}` existed!")
                     else:
                         services["uid"].create(
@@ -277,7 +280,10 @@ def on_scraper(
                     if not phone_number:
                         raise ScrapingError("phone_number is empty!")
 
-                    if services["phone_number"].is_existed("value", phone_number):
+                    if (
+                        services["phone_number"].is_existed("value", phone_number)
+                        and not task_info.target_keywords
+                    ):
                         raise ScrapingError(f"phone_number `{phone_number}` existed!")
                     else:
                         services["phone_number"].create(
