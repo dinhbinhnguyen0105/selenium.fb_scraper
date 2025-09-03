@@ -127,7 +127,10 @@ def on_scraper(
                 By.CSS_SELECTOR, "a[href^='https://www.facebook.com/groups/']"
             )
             for group_elm in group_elms:
+            #     if "thuê" in group_elm.get_attribute("textContent").lower():
+            #         group_urls.append(group_elm.get_attribute("href"))/
                 group_urls.append(group_elm.get_attribute("href"))
+
 
             return group_urls
         except Exception as e:
