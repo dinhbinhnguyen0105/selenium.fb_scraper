@@ -316,7 +316,7 @@ def on_scraper(
 
     group_urls = get_groups()
 
-    print(group_urls)
+    # print(group_urls)
 
     if not task_info.target_keywords:
         for group_url in group_urls:
