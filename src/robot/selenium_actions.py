@@ -301,11 +301,15 @@ def on_scraper(
                     services["result"].create(result)
                     print(result)
                 except ScrapingError as e:
-                    driver.execute_script("arguments[0].remove();", article_elm)
-                    post_index += 1
-                    print(e)
-                    continue
+                    # driver.execute_script("arguments[0].remove();", article_elm)
+                    # print(e)
+                    # continue
+                    pass
                 except NoSuchElementException:
+                    # driver.execute_script("arguments[0].remove();", article_elm)
+                    pass
+                finally:
+                    post_index += 1
                     driver.execute_script("arguments[0].remove();", article_elm)
                     continue
 
