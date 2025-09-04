@@ -85,7 +85,7 @@ def on_scraper(
         except Exception:
             return False
 
-    def get_groups(max_loading_attempts=30) -> List[str]:
+    def get_groups(max_loading_attempts=0) -> List[str]:
         group_urls = []
         try:
             driver.get("https://www.facebook.com/groups/feed/")
