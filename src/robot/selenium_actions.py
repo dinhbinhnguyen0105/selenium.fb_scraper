@@ -51,7 +51,6 @@ def on_scraper(
     actions = ActionChains(driver=driver)
     central_scroll_script = "arguments[0].scrollIntoView({behavior: 'auto', block: 'center', inline: 'center'});"
 
-    # task_info.target_keywords
     def highlight(element: WebElement) -> None:
         # original_style = element.get_attribute("style")
         highlight_style = (
@@ -85,7 +84,7 @@ def on_scraper(
         except Exception:
             return False
 
-    def get_groups(max_loading_attempts=0) -> List[str]:
+    def get_groups(max_loading_attempts=30) -> List[str]:
         group_urls = []
         try:
             driver.get("https://www.facebook.com/groups/feed/")
@@ -243,8 +242,6 @@ def on_scraper(
                     result.author_url = author_info_obj.get("author_url")
                     result.author_name = author_info_obj.get("author_name")
 
-                    # if not result.author_url:
-                    #     raise ScrapingError("author_url is empty!")
                     uid = ""
                     if result.author_url.endswith("/"):
                         uid = result.author_url.split("/")[-2]
@@ -301,24 +298,14 @@ def on_scraper(
                     services["result"].create(result)
                     print(result)
                 except ScrapingError as e:
-                    # driver.execute_script("arguments[0].remove();", article_elm)
-                    # print(e)
-                    # continue
                     pass
                 except NoSuchElementException:
-                    # driver.execute_script("arguments[0].remove();", article_elm)
                     pass
                 finally:
                     post_index += 1
                     driver.execute_script("arguments[0].remove();", article_elm)
+                    print("Remove elm")
                     continue
-
-                # while True:
-                #     try:
-                #         _ = driver.title
-                #     except WebDriverException as e:
-                #         return True
-
             return
         except Exception as e:
             print(str(e))
