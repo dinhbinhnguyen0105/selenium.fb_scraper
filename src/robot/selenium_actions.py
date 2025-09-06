@@ -85,7 +85,7 @@ def on_scraper(
         except Exception:
             return False
 
-    def get_groups(max_loading_attempts=30) -> List[str]:
+    def get_groups(max_loading_attempts=0) -> List[str]:
         group_urls = []
         try:
             driver.get("https://www.facebook.com/groups/feed/")
@@ -301,11 +301,15 @@ def on_scraper(
                     services["result"].create(result)
                     print(result)
                 except ScrapingError as e:
-                    driver.execute_script("arguments[0].remove();", article_elm)
-                    post_index += 1
-                    print(e)
-                    continue
+                    # driver.execute_script("arguments[0].remove();", article_elm)
+                    # print(e)
+                    # continue
+                    pass
                 except NoSuchElementException:
+                    # driver.execute_script("arguments[0].remove();", article_elm)
+                    pass
+                finally:
+                    post_index += 1
                     driver.execute_script("arguments[0].remove();", article_elm)
                     continue
 
