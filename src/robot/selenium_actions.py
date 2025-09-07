@@ -249,7 +249,7 @@ def on_scraper(
                         uid = result.author_url.split("/")[-1]
                     if (
                         services["uid"].is_existed("value", uid)
-                        and not task_info.target_keywords
+                        # and not task_info.target_keywords
                     ):
                         raise ScrapingError(f"uid `{uid}` existed!")
                     else:
@@ -279,7 +279,7 @@ def on_scraper(
 
                     if (
                         services["phone_number"].is_existed("value", phone_number)
-                        and not task_info.target_keywords
+                        # and not task_info.target_keywords
                     ):
                         raise ScrapingError(f"phone_number `{phone_number}` existed!")
                     else:
